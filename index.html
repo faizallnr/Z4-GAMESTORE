@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Z4 Gamestore - Top Up Game Premium</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Animasi transisi konten agar perpindahan tab terasa smooth */
         .tab-content {
             display: none;
             opacity: 0;
@@ -21,17 +21,21 @@
 </head>
 <body class="bg-slate-900 text-white font-sans relative min-h-screen flex flex-col justify-between">
 
+    <!-- BACKGROUND IMAGE -->
     <div class="fixed inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1470&auto=format&fit=crop')] bg-cover bg-center opacity-15 pointer-events-none -z-10"></div>
 
+    <!-- NAVBAR UTAMA -->
     <nav class="bg-slate-800/90 backdrop-blur border-b border-slate-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20 gap-2">
+                <!-- Logo -->
                 <div class="flex-shrink-0">
                     <button onclick="switchTab('beranda')" class="text-xl sm:text-2xl font-extrabold text-violet-400 tracking-wider font-mono focus:outline-none whitespace-nowrap">
                         Z4 <span class="text-cyan-400">Gamestore</span>
                     </button>
                 </div>
                 
+                <!-- Menu Navigasi Desktop -->
                 <div class="hidden md:flex space-x-1 bg-slate-950/60 p-1.5 rounded-xl border border-slate-700/50">
                     <button onclick="switchTab('beranda')" id="nav-beranda" class="nav-btn bg-cyan-500 text-slate-900 px-4 py-2 rounded-lg text-sm font-bold transition duration-200">
                         <i class="fa-solid fa-house mr-1.5"></i>Beranda
@@ -47,6 +51,7 @@
                     </a>
                 </div>
 
+                <!-- Tombol Akun / Login (Tetap Ada di HP & PC) -->
                 <div class="flex-shrink-0">
                     <button onclick="toggleAuthModal(true)" class="bg-slate-950 hover:bg-slate-900 text-cyan-400 border border-cyan-500/30 font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm transition duration-300 flex items-center gap-1.5 sm:gap-2 shadow-lg shadow-cyan-500/5">
                         <i class="fa-solid fa-user-astronaut text-sm sm:text-base"></i><span>Masuk</span>
@@ -55,6 +60,7 @@
             </div>
         </div>
         
+        <!-- MOBILE NAVIGATION (Navigasi Bawah HP Asli Tanpa Diubah Tata Letaknya) -->
         <div class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-800/95 backdrop-blur border-t border-slate-700 z-50 py-2 px-4 flex justify-around shadow-2xl">
             <button onclick="switchTab('beranda')" id="mob-beranda" class="mob-btn flex flex-col items-center gap-0.5 text-cyan-400 font-bold">
                 <i class="fa-solid fa-house text-lg"></i><span class="text-[10px]">Beranda</span>
@@ -71,9 +77,401 @@
         </div>
     </nav>
 
+    <!-- CONTAINER HALAMAN UTAMA -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow mb-20 md:mb-6">
         
+        <!-- ================= TAB 1: BERANDA ================= -->
         <div id="tab-beranda" class="tab-content active space-y-8">
             
+            <!-- BANNER PROMO -->
             <div class="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl relative group">
-                <img id="bannerUtama" src="
+                <img id="bannerUtama" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?q=80&w=1471&auto=format&fit=crop" alt="Promo Banner" class="w-full h-[200px] md:h-[350px] object-cover opacity-80 group-hover:scale-[100.5%] transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent p-6 md:p-10 flex flex-col justify-end">
+                    <span class="bg-violet-500 text-white font-extrabold text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-md w-fit mb-2">OFFICIAL STORE</span>
+                    <h1 class="text-2xl md:text-4xl font-extrabold text-white tracking-tight drop-shadow-md">Top Up Game Otomatis & Terlengkap</h1>
+                    <p class="text-gray-300 text-xs md:text-sm mt-1 max-w-xl hidden sm:block">Layanan pengisian voucher, diamond, dan premium instan aktif 24 jam nonstop dengan payment gateway teraman.</p>
+                </div>
+            </div>
+
+            <!-- MENU PILIHAN GAME -->
+            <section class="bg-slate-800/60 backdrop-blur p-6 rounded-2xl border border-slate-700/60 shadow-xl">
+                <div class="flex flex-col mb-6">
+                    <h2 class="text-xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+                        <i class="fa-solid fa-fire-flame-curved text-cyan-400 mr-2"></i>Game Terpopuler
+                    </h2>
+                    <p class="text-xs text-gray-400 mt-1">Pilih game favoritmu di bawah ini untuk memulai pengisian saldo instant.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Game Card 1: Mobile Legends -->
+                    <div onclick="openTopUpFlow('Mobile Legends')" class="game-card bg-slate-950/80 p-5 rounded-2xl border-2 border-slate-800 hover:border-cyan-500 cursor-pointer transition-all duration-300 text-center group shadow-md hover:shadow-cyan-500/10">
+                        <div class="w-full h-28 bg-slate-900 rounded-xl mb-4 flex items-center justify-center text-gray-500 group-hover:bg-cyan-500/10 group-hover:text-cyan-400 transition-all duration-300">
+                            <i class="fa-solid fa-mobile-screen-button text-4xl transform group-hover:scale-110 transition"></i>
+                        </div>
+                        <p class="font-bold tracking-wide text-sm text-white group-hover:text-cyan-400 transition">Mobile Legends</p>
+                        <span class="text-[10px] text-cyan-400/80 font-medium bg-cyan-500/10 px-2 py-0.5 rounded-md mt-2 inline-block">Instan Proses</span>
+                    </div>
+
+                    <!-- Game Card 2: Free Fire -->
+                    <div onclick="openTopUpFlow('Free Fire')" class="game-card bg-slate-950/80 p-5 rounded-2xl border-2 border-slate-800 hover:border-cyan-500 cursor-pointer transition-all duration-300 text-center group shadow-md hover:shadow-cyan-500/10">
+                        <div class="w-full h-28 bg-slate-900 rounded-xl mb-4 flex items-center justify-center text-gray-500 group-hover:bg-violet-500/10 group-hover:text-violet-400 transition-all duration-300">
+                            <i class="fa-solid fa-fire text-4xl transform group-hover:scale-110 transition"></i>
+                        </div>
+                        <p class="font-bold tracking-wide text-sm text-white group-hover:text-violet-400 transition">Free Fire</p>
+                        <span class="text-[10px] text-violet-400/80 font-medium bg-violet-500/10 px-2 py-0.5 rounded-md mt-2 inline-block">Instan Proses</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FORM PROSES TOP UP -->
+            <div id="flowTopUpForm" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-8 pt-4 scroll-mt-24">
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- INFO UTAMA GAME -->
+                    <div class="bg-gradient-to-r from-slate-950 to-slate-900 p-4 rounded-xl border border-slate-800 flex justify-between items-center shadow-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-cyan-500/10 text-cyan-400 p-2.5 rounded-lg text-lg">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 font-medium">Kamu Sedang Mengisi Game:</p>
+                                <p id="activeGameBadge" class="text-base font-extrabold text-white tracking-wide">-</p>
+                            </div>
+                        </div>
+                        <button onclick="cancelTopUpFlow()" class="text-xs text-red-400 bg-red-500/10 hover:bg-red-500/20 px-3 py-1.5 rounded-lg font-bold transition">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Ganti Game
+                        </button>
+                    </div>
+
+                    <!-- STEP 1: VALIDASI ID -->
+                    <section class="bg-slate-800/80 backdrop-blur p-6 rounded-2xl border border-slate-700 shadow-xl">
+                        <h2 class="text-base font-bold mb-4 flex items-center text-cyan-400">
+                            <span class="bg-cyan-400 text-slate-900 w-6 h-6 rounded-lg flex items-center justify-center mr-3 text-xs font-bold shadow">1</span>
+                            Validasi Akun Tujuan
+                        </h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Masukkan User ID <span id="labelZone">/ Server</span></label>
+                                <div id="inputWrapper" class="grid grid-cols-3 gap-2">
+                                    <input type="text" id="userId" placeholder="User ID" class="col-span-2 bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500">
+                                    <input type="text" id="zoneId" placeholder="(Zone)" class="bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500">
+                                </div>
+                            </div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+                                <button type="button" onclick="checkGameId()" class="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-slate-900 font-extrabold px-5 py-2 rounded-xl text-xs transition duration-300 shadow-md">
+                                    <i class="fa-solid fa-magnifying-glass mr-1.5"></i> Verifikasi ID Akun
+                                </button>
+                                <div id="resultIdWrapper" class="text-sm font-medium hidden"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- STEP 2: NOMINAL -->
+                    <section class="bg-slate-800/80 backdrop-blur p-6 rounded-2xl border border-slate-700 shadow-xl">
+                        <h2 class="text-base font-bold mb-4 flex items-center text-cyan-400">
+                            <span class="bg-cyan-400 text-slate-900 w-6 h-6 rounded-lg flex items-center justify-center mr-3 text-xs font-bold shadow">2</span>
+                            Pilih Nominal Pembelian
+                        </h2>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div onclick="selectNominal('50 Diamonds', 15000)" class="nominal-card bg-slate-950/90 p-4 rounded-xl border-2 border-transparent hover:border-cyan-500 cursor-pointer transition">
+                                <p class="font-bold text-sm">50 Diamonds</p>
+                                <p class="text-xs text-cyan-400 mt-1 font-semibold">Rp 15.000</p>
+                            </div>
+                            <div onclick="selectNominal('100 Diamonds', 30000)" class="nominal-card bg-slate-950/90 p-4 rounded-xl border-2 border-transparent hover:border-cyan-500 cursor-pointer transition">
+                                <p class="font-bold text-sm">100 Diamonds</p>
+                                <p class="text-xs text-cyan-400 mt-1 font-semibold">Rp 30.000</p>
+                            </div>
+                            <div onclick="selectNominal('250 Diamonds', 72000)" class="nominal-card bg-slate-950/90 p-4 rounded-xl border-2 border-transparent hover:border-cyan-500 cursor-pointer transition">
+                                <p class="font-bold text-sm">250 Diamonds</p>
+                                <p class="text-xs text-cyan-400 mt-1 font-semibold">Rp 72.000</p>
+                            </div>
+                            <div onclick="selectNominal('500 Diamonds', 140000)" class="nominal-card bg-slate-950/90 p-4 rounded-xl border-2 border-transparent hover:border-cyan-500 cursor-pointer transition">
+                                <p class="font-bold text-sm">500 Diamonds</p>
+                                <p class="text-xs text-cyan-400 mt-1 font-semibold">Rp 140.000</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- STEP 3: METODE BAYAR -->
+                    <section class="bg-slate-800/80 backdrop-blur p-6 rounded-2xl border border-slate-700 shadow-xl">
+                        <h2 class="text-base font-bold mb-4 flex items-center text-cyan-400">
+                            <span class="bg-cyan-400 text-slate-900 w-6 h-6 rounded-lg flex items-center justify-center mr-3 text-xs font-bold shadow">3</span>
+                            Metode Pembayaran
+                        </h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div onclick="selectPayment('QRIS')" class="payment-card bg-slate-950/90 p-4 rounded-xl border-2 border-transparent hover:border-cyan-500 cursor-pointer transition flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="bg-white p-1 rounded-lg w-14 h-8 flex items-center justify-center overflow-hidden">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/QRIS_logo.svg" alt="QRIS" class="max-h-full max-w-full object-contain">
+                                    </div>
+                                    <span class="font-bold text-xs tracking-wide">QRIS (Otomatis)</span>
+                                </div>
+                            </div>
+                            <div onclick="selectPayment('DANA')" class="payment-card bg-slate-950/90 p-4 rounded-xl border-2 border-transparent hover:border-cyan-500 cursor-pointer transition flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="bg-white p-1 rounded-lg w-14 h-8 flex items-center justify-center overflow-hidden">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA" class="max-h-full max-w-full object-contain">
+                                    </div>
+                                    <span class="font-bold text-xs tracking-wide">DANA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- RINGKASAN STRUK -->
+                <div class="space-y-6">
+                    <section class="bg-slate-800/90 backdrop-blur p-6 rounded-2xl border border-slate-700 h-fit shadow-xl sticky top-28">
+                        <h2 class="text-base font-bold mb-4 flex items-center text-cyan-400">
+                            <i class="fa-solid fa-receipt mr-3"></i> Ringkasan Belanja
+                        </h2>
+                        <form id="orderForm" onsubmit="handleOrder(event)" class="space-y-4">
+                            <div class="bg-slate-950/90 p-4 rounded-xl text-xs space-y-3">
+                                <div class="flex justify-between"><span class="text-gray-400">Game:</span> <span id="summaryGame" class="font-medium">-</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">ID / Server:</span> <span id="summaryId" class="font-medium">-</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">Nickname:</span> <span id="summaryNickname" class="text-amber-400 font-semibold">-</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">Item:</span> <span id="summaryNominal" class="font-medium">-</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">Metode:</span> <span id="summaryPayment" class="font-medium">-</span></div>
+                                <div class="flex justify-between border-t border-slate-800 pt-3 font-bold text-sm"><span class="text-cyan-400">Total Tagihan:</span> <span id="summaryHarga">Rp 0</span></div>
+                            </div>
+                            <button type="submit" id="btnSubmitOrder" disabled class="w-full bg-slate-700 text-gray-400 cursor-not-allowed font-extrabold py-3 rounded-xl transition duration-300 uppercase tracking-wider text-xs shadow-md">
+                                Harap Cek ID Akun Dahulu
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 2: PERIKSA PESANAN ================= -->
+        <div id="tab-periksa" class="tab-content text-center py-16 max-w-md mx-auto">
+            <div class="bg-slate-800/80 p-8 rounded-2xl border border-slate-700 shadow-2xl">
+                <div class="w-16 h-16 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h2 class="text-xl font-black text-white">Fitur Ini Belum Tersedia</h2>
+                <p class="text-gray-400 text-xs mt-2 leading-relaxed">Sistem pelacakan otomatis transaksional harian sedang dalam tahap sinkronisasi database pengembang.</p>
+                <button onclick="switchTab('beranda')" class="mt-6 bg-slate-900 hover:bg-slate-950 text-cyan-400 font-bold px-4 py-2 border border-cyan-500/20 rounded-xl text-xs transition">Kembali ke Beranda</button>
+            </div>
+        </div>
+
+        <!-- ================= TAB 3: GABUNG RESELLER ================= -->
+        <div id="tab-reseller" class="tab-content text-center py-16 max-w-md mx-auto">
+            <div class="bg-slate-800/80 p-8 rounded-2xl border border-slate-700 shadow-2xl">
+                <div class="w-16 h-16 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+                    <i class="fa-solid fa-cubes"></i>
+                </div>
+                <h2 class="text-xl font-black text-white">Fitur Ini Belum Tersedia</h2>
+                <p class="text-gray-400 text-xs mt-2 leading-relaxed">Pendaftaran akun khusus mitra reseller berharga grosir sedang dipersiapkan untuk kluster wilayah Anda.</p>
+                <button onclick="switchTab('beranda')" class="mt-6 bg-slate-900 hover:bg-slate-950 text-violet-400 font-bold px-4 py-2 border border-violet-500/20 rounded-xl text-xs transition">Kembali ke Beranda</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POP UP LOGIN -->
+    <div id="authModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden p-4 backdrop-blur-sm">
+        <div class="bg-slate-800 border border-slate-700 w-full max-w-md rounded-2xl p-6 relative shadow-2xl">
+            <button onclick="toggleAuthModal(false)" class="absolute right-4 top-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div>
+                <h2 class="text-xl font-bold text-cyan-400 mb-1">Masuk Akun Z4</h2>
+                <p class="text-gray-400 text-xs mb-4">Akses riwayat transaksi Anda.</p>
+                <form onsubmit="event.preventDefault(); alert('Simulasi Login Berhasil!'); toggleAuthModal(false);" class="space-y-3">
+                    <input type="email" required class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-xs text-white" placeholder="Email Anda">
+                    <input type="password" required class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-xs text-white" placeholder="Password">
+                    <button type="submit" class="w-full bg-cyan-500 text-slate-900 font-bold py-2 rounded-lg text-xs mt-2">Log In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950/80 border-t border-slate-800 py-6 text-center text-xs text-gray-500 w-full z-10 flex flex-col items-center gap-3 mb-16 md:mb-0">
+        <p>&copy; 2026 <span class="text-violet-400 font-bold">Z4</span> <span class="text-cyan-400 font-bold">Gamestore</span>. All Rights Reserved.</p>
+        <a href="https://www.instagram.com/faizallnr" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-gray-400 hover:text-pink-500 transition duration-300 border border-slate-800 px-3 py-1.5 rounded-lg bg-slate-900 text-[11px]">
+            <i class="fa-brands fa-instagram text-pink-500"></i><span>@faizallnr</span>
+        </a>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let selectedGame = '';
+        let selectedNominal = '';
+        let selectedPrice = 0;
+        let selectedPaymentMethod = '';
+        let isIdVerified = false;
+
+        function switchTab(tabId) {
+            if(tabId !== 'beranda') {
+                cancelTopUpFlow();
+            }
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById('tab-' + tabId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn text-gray-400 hover:text-white hover:bg-slate-800 px-4 py-2 rounded-lg text-sm font-medium transition duration-200";
+            });
+            if(document.getElementById('nav-' + tabId)) {
+                document.getElementById('nav-' + tabId).className = "nav-btn bg-cyan-500 text-slate-900 px-4 py-2 rounded-lg text-sm font-bold transition duration-200";
+            }
+
+            document.querySelectorAll('.mob-btn').forEach(btn => {
+                btn.className = "mob-btn flex flex-col items-center gap-0.5 text-gray-400";
+            });
+            if(document.getElementById('mob-' + tabId)) {
+                document.getElementById('mob-' + tabId).className = "mob-btn flex flex-col items-center gap-0.5 text-cyan-400 font-bold";
+            }
+        }
+
+        function toggleAuthModal(show) {
+            const modal = document.getElementById('authModal');
+            if(show) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function openTopUpFlow(gameName) {
+            selectedGame = gameName;
+            document.getElementById('activeGameBadge').innerText = gameName;
+            document.getElementById('summaryGame').innerText = gameName;
+
+            document.querySelectorAll('.game-card').forEach(el => el.classList.remove('border-cyan-500'));
+            if(window.event && window.event.currentTarget) {
+                window.event.currentTarget.classList.add('border-cyan-500');
+            }
+
+            const flowForm = document.getElementById('flowTopUpForm');
+            flowForm.classList.remove('hidden');
+
+            const labelZone = document.getElementById('labelZone');
+            const zoneInput = document.getElementById('zoneId');
+            const userInput = document.getElementById('userId');
+            const inputWrapper = document.getElementById('inputWrapper');
+
+            resetVerification();
+
+            if (gameName === 'Free Fire') {
+                zoneInput.classList.add('hidden');
+                userInput.classList.remove('col-span-2');
+                userInput.classList.add('w-full');
+                inputWrapper.classList.remove('grid-cols-3');
+                inputWrapper.classList.add('grid-cols-1');
+                labelZone.innerText = '';
+                document.getElementById('userId').placeholder = "Contoh Player ID: 87654321";
+            } else {
+                zoneInput.classList.remove('hidden');
+                userInput.classList.remove('w-full');
+                userInput.classList.add('col-span-2');
+                inputWrapper.classList.remove('grid-cols-1');
+                inputWrapper.classList.add('grid-cols-3');
+                labelZone.innerText = ' / Server';
+                document.getElementById('userId').placeholder = "User ID";
+            }
+
+            setTimeout(() => {
+                flowForm.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function cancelTopUpFlow() {
+            selectedGame = '';
+            document.getElementById('flowTopUpForm').classList.add('hidden');
+            document.querySelectorAll('.game-card').forEach(el => el.classList.remove('border-cyan-500'));
+            resetVerification();
+        }
+
+        function checkGameId() {
+            const userId = document.getElementById('userId').value.trim();
+            const zoneId = document.getElementById('zoneId').value.trim();
+            const resultWrapper = document.getElementById('resultIdWrapper');
+            const btnSubmit = document.getElementById('btnSubmitOrder');
+
+            if (userId === '') {
+                alert('Kolom User ID game tidak boleh kosong!');
+                return;
+            }
+
+            resultWrapper.classList.remove('hidden');
+
+            if (userId.length >= 5) {
+                isIdVerified = true;
+                let textStatus = "Fitur ini belum tersedia";
+
+                if (selectedGame === 'Mobile Legends') {
+                    document.getElementById('summaryId').innerText = userId + " (" + (zoneId || '1234') + ")";
+                } else {
+                    document.getElementById('summaryId').innerText = userId;
+                }
+
+                resultWrapper.innerHTML = '<span class="text-amber-400 flex items-center gap-1 text-xs"><i class="fa-solid fa-triangle-exclamation"></i> <b>' + textStatus + '</b></span>';
+                
+                const summaryNickEl = document.getElementById('summaryNickname');
+                summaryNickEl.innerText = textStatus;
+                summaryNickEl.className = "text-amber-400 font-semibold text-xs italic";
+
+                btnSubmit.disabled = false;
+                btnSubmit.className = "w-full bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-extrabold py-3 rounded-xl transition duration-300 uppercase tracking-wider text-xs shadow-md cursor-pointer";
+                btnSubmit.innerText = "Beli Sekarang";
+            } else {
+                isIdVerified = false;
+                resultWrapper.innerHTML = '<span class="text-red-500 flex items-center gap-1 text-xs"><i class="fa-solid fa-circle-xmark"></i> ID terlalu pendek</span>';
+                resetVerification();
+            }
+        }
+
+        function resetVerification() {
+            isIdVerified = false;
+            const btnSubmit = document.getElementById('btnSubmitOrder');
+            document.getElementById('summaryId').innerText = "-";
+            
+            const summaryNickEl = document.getElementById('summaryNickname');
+            summaryNickEl.innerText = "-";
+            summaryNickEl.className = "text-amber-400 font-semibold";
+            
+            btnSubmit.disabled = true;
+            btnSubmit.className = "w-full bg-slate-700 text-gray-400 cursor-not-allowed font-extrabold py-3 rounded-xl transition duration-300 uppercase tracking-wider text-xs shadow-md";
+            btnSubmit.innerText = "Harap Cek ID Akun Dahulu";
+        }
+
+        document.getElementById('userId').addEventListener('input', resetVerification);
+        document.getElementById('zoneId').addEventListener('input', resetVerification);
+
+        function selectNominal(nominalName, price) {
+            if(!selectedGame) return;
+            selectedNominal = nominalName;
+            selectedPrice = price;
+            document.getElementById('summaryNominal').innerText = nominalName;
+            document.getElementById('summaryHarga').innerText = 'Rp ' + price.toLocaleString('id-ID');
+
+            document.querySelectorAll('.nominal-card').forEach(el => el.classList.remove('border-cyan-500'));
+            if(window.event && window.event.currentTarget) {
+                window.event.currentTarget.classList.add('border-cyan-500');
+            }
+        }
+
+        function selectPayment(paymentName) {
+            if(!selectedGame) return;
+            selectedPaymentMethod = paymentName;
+            document.getElementById('summaryPayment').innerText = paymentName;
+
+            document.querySelectorAll('.payment-card').forEach(el => el.classList.remove('border-cyan-500'));
+            if(window.event && window.event.currentTarget) {
+                window.event.currentTarget.classList.add('border-cyan-500');
+            }
+        }
+
+        function handleOrder(e) {
+            e.preventDefault();
+            if(!isIdVerified || !selectedNominal || !selectedPaymentMethod) {
+                alert('Harap lengkapi semua data langkah 1, 2, dan 3!');
+                return;
+            }
+            alert('Pesanan ' + selectedNominal + ' untuk game ' + selectedGame + ' berhasil diproses dengan metode ' + selectedPaymentMethod + '!');
+        }
+    </script>
+</body>
+</html>
